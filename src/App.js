@@ -7,27 +7,12 @@ function App() {
   const [leftItems, setLeftItems] = useState([
     { id: 1, icon: "bi bi-list", text: "Navbar", type: "navbar" },
     { id: 2, icon: "bi bi-images", text: "Carousel Image", type: "carousel" },
-    {
-      id: 3,
-      icon: "bi bi-grid-3x3-gap-fill",
-      text: "Product Grid",
-      type: "grid",
-    },
+    {id: 3, icon: "bi bi-grid-3x3-gap-fill", text: "Product Grid", type: "grid",    },
     { id: 4, icon: "bi bi-image", text: "Image with Text", type: "imagetext" },
     { id: 5, icon: "bi bi-card-image", text: "Image", type: "image" },
     { id: 6, icon: "bi bi-fonts", text: "Text", type: "text" },
-    {
-      id: 7,
-      icon: "bi bi-person-lines-fill",
-      text: "Customer Reviews",
-      type: "review",
-    },
-    {
-      id: 8,
-      icon: "bi bi-file-earmark-text",
-      text: "Contact Us",
-      type: "contact",
-    },
+    {id: 7,icon: "bi bi-person-lines-fill",text: "Customer Reviews",type: "review",},
+    { id: 8,icon: "bi bi-file-earmark-text", text: "Contact Us", type: "contact",},
     { id: 9, icon: "bi bi-grip-horizontal", text: "Footer", type: "footer" },
   ]);
 
@@ -120,13 +105,8 @@ function App() {
   const DraggableItem = ({ item, source }) => {
     if (source === "left") {
       return (
-        <div
-          className="item"
-          draggable="true"
-          onDragStart={(e) => handleDragStart(e, item)}
-        >
-          <i className={item.icon}></i>
-          {item.text}
+        <div className="item" draggable="true" onDragStart={(e) => handleDragStart(e, item)}>
+          <i className={item.icon}></i>{item.text}
         </div>
       );
     }
@@ -136,21 +116,11 @@ function App() {
       if (item.type === "text") {
         return (
           <div className="functional-component text-component">
-            <div
-              className="component-header"
-              draggable="true"
-              onDragStart={(e) => handleDragStart(e, item)}
-            >
-              <i className={item.icon}></i>
-              <span>{item.text}</span>
+            <div className="component-header" draggable="true" onDragStart={(e) => handleDragStart(e, item)}>
+              <i className={item.icon}></i> <span>{item.text}</span>
               <i className="bi bi-arrows-move drag-handle"></i>
             </div>
-            <div
-              className="editable-text"
-              contentEditable
-              suppressContentEditableWarning
-              onBlur={(e) => handleTextEdit(item.id, e.target.innerText)}
-              dangerouslySetInnerHTML={{
+            <div className="editable-text" contentEditable suppressContentEditableWarning  onBlur={(e) => handleTextEdit(item.id, e.target.innerText)} dangerouslySetInnerHTML={{
                 __html:
                   componentContent[item.id]?.text || "Click to edit text...",
               }}
@@ -162,11 +132,7 @@ function App() {
       if (item.type === "image") {
         return (
           <div className="functional-component image-component">
-            <div
-              className="component-header"
-              draggable="true"
-              onDragStart={(e) => handleDragStart(e, item)}
-            >
+            <div className="component-header" draggable="true" onDragStart={(e) => handleDragStart(e, item)}>
               <i className={item.icon}></i>
               <span>{item.text}</span>
               <i className="bi bi-arrows-move drag-handle"></i>
@@ -174,31 +140,18 @@ function App() {
             <div className="image-upload-area">
               {componentContent[item.id]?.imageUrl ? (
                 <div className="image-preview">
-                  <img
-                    src={componentContent[item.id].imageUrl}
-                    alt="Uploaded"
-                  />
-                  <button
-                    className="change-image-btn"
-                    onClick={() => fileInputRefs.current[item.id]?.click()}
-                  >
+                  <img src={componentContent[item.id].imageUrl} alt="Uploaded"/>
+                  <button className="change-image-btn" onClick={() => fileInputRefs.current[item.id]?.click()}>
                     <i className="bi bi-pencil"></i> Change Image
                   </button>
                 </div>
               ) : (
-                <div
-                  className="upload-placeholder"
-                  onClick={() => fileInputRefs.current[item.id]?.click()}
-                >
+                <div className="upload-placeholder" onClick={() => fileInputRefs.current[item.id]?.click()}>
                   <i className="bi bi-cloud-upload"></i>
                   <p>Click to upload image</p>
                 </div>
               )}
-              <input
-                ref={(el) => (fileInputRefs.current[item.id] = el)}
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
+              <input ref={(el) => (fileInputRefs.current[item.id] = el)} type="file" accept="image/*" style={{ display: "none" }}
                 onChange={(e) => handleImageUpload(item.id, e)}
               />
             </div>
@@ -222,22 +175,14 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div
-        className="left"
-        onDragOver={handleDragOver}
-        onDrop={handleDropToLeft}
-      >
+      <div className="left" onDragOver={handleDragOver} onDrop={handleDropToLeft}>
         <h3>Available Components</h3>
         {leftItems.map((item) => (
           <DraggableItem key={item.id} item={item} source="left" />
         ))}
       </div>
 
-      <div
-        className="right"
-        onDragOver={handleDragOver}
-        onDrop={handleDropToRight}
-      >
+      <div className="right" onDragOver={handleDragOver} onDrop={handleDropToRight}>
         <h3>Selected Components</h3>
         {rightItems.length === 0 && (
           <div className="empty-state">
