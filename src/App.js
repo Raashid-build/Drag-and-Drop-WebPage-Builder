@@ -7,13 +7,13 @@ function App() {
   const [leftItems, setLeftItems] = useState([
     { id: 1, icon: "bi bi-list", text: "Navbar", type: "navbar" },
     { id: 2, icon: "bi bi-images", text: "Carousel Image", type: "carousel" },
-    {id: 3, icon: "bi bi-grid-3x3-gap-fill", text: "Product Grid", type: "grid",    },
+    { id: 3, icon: "bi bi-grid-3x3-gap-fill", text: "Product Grid", type: "grid", },
     { id: 4, icon: "bi bi-image", text: "Image with Text", type: "imagetext" },
     { id: 5, icon: "bi bi-card-image", text: "Image", type: "image" },
     { id: 6, icon: "bi bi-fonts", text: "Text", type: "text" },
-    {id: 7,icon: "bi bi-person-lines-fill",text: "Customer Reviews",type: "review",},
-    { id: 8,icon: "bi bi-file-earmark-text", text: "Contact Us", type: "contact",},
-    { id: 9, icon: "bi bi-grip-horizontal", text: "Footer", type: "footer" },
+    { id: 7,icon: "bi bi-person-lines-fill",text: "Customer Reviews",type: "review", },
+    { id: 8,icon: "bi bi-file-earmark-text", text: "Contact Us", type: "contact", },
+    { id: 9, icon: "bi bi-grip-horizontal", text: "Footer", type: "footer"},
   ]);
 
   // Store content for each component
